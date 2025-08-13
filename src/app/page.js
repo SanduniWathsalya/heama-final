@@ -1,103 +1,472 @@
+"use client";
+
 import Image from "next/image";
+import {
+  FaFlask,
+  FaSoap,
+  FaLeaf,
+  FaSprayCan,
+  FaBath,
+  FaTint,
+  FaWater,
+  FaPumpSoap,
+  FaArrowDown,
+  FaCar,
+  FaToilet,
+  FaAtom,
+  FaOilCan,
+  FaPaintBrush,
+} from "react-icons/fa";
 
-export default function Home() {
+import {
+  GiPerfumeBottle,
+  GiWaterBottle,
+} from "react-icons/gi";
+
+import { useEffect, useState, useRef } from "react";
+
+// Custom hook for fade-up on scroll
+function useScrollFadeIn() {
+  const ref = useRef(null);
+  const [isVisible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(element);
+        }
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, isVisible];
+}
+
+function ProductCard({ image, title, subtitle, description, icon: Icon }) {
+  const [ref, isVisible] = useScrollFadeIn();
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+    <div
+      ref={ref}
+      className={`border border-gray-100 rounded-lg shadow overflow-hidden transition-opacity transition-transform duration-700 ease-out
+        ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+    >
+      {/* Image Wrapper with Overlay */}
+      <div className="relative rounded-md overflow-hidden">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src={image}
+          alt={title}
+          width={400}
+          height={300}
+          className="object-cover w-full h-60"
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        {/* Black Fade Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent flex flex-col justify-center items-center text-center p-4">
+          {/* Icon in Circle */}
+          <div className="bg-white rounded-full p-3 mb-2">
+            {Icon ? (
+              <Icon className="text-green-500 text-xl" />
+            ) : (
+              <FaFlask className="text-green-500 text-xl" />
+            )}
+          </div>
+          {/* Product Title */}
+          <h4 className="text-white font-semibold text-xl">{title}</h4>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      {/* Subtitle between image and description */}
+      {subtitle && <h5 className="mt-4 px-4 text-center">{subtitle}</h5>}
+
+      {/* Description below */}
+      <div className="p-4">
+        <p className="text-gray-600 text-sm">{description}</p>
+      </div>
     </div>
+  );
+}
+
+export default function ProductsPage() {
+  // Animate the big About and Products sections too
+  const [aboutRef, aboutVisible] = useScrollFadeIn();
+  const [productsRef, productsVisible] = useScrollFadeIn();
+  const [chemicalsRef, chemicalsVisible] = useScrollFadeIn();
+
+  return (
+    <main className="relative bg-gradient-to-r from-blue-50 via-white to-cyan-50">
+      {/* Hero Section */}
+      <div className="relative h-[500px] sm:h-[500px] w-full">
+        <Image
+          src="/images/3696093.jpg"
+          alt="Hero"
+          layout="fill"
+          objectFit="fill"
+          className="z-0 filter"
+        />
+        <div className="absolute inset-0 bg-transparent bg-opacity-70 pt-24 z-10 flex flex-col items-center justify-center text-black px-4 text-center">
+          <div className="relative z-10 px-6 py-24 md:py-32 lg:py-40 text-center text-white">
+            <h1 className="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow">
+              Our Products
+            </h1>
+            <p className="max-w-3xl mx-auto text-lg md:text-xl font-medium leading-relaxed text-gray-200">
+              Our products are designed to deliver reliable performance and meet
+              industry standards across cleaning, industrial, and specialty
+              applications.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll Prompt Section */}
+      <div className="w-full flex flex-col items-center justify-center py-4 sm:py-6 relative z-20">
+        <p className="text-base sm:text-lg font-medium mb-2 sm:mb-4 text-gray-700 animate-pulse">
+          Click to see more
+        </p>
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-4 sm:mb-6">
+          <button
+            onClick={() =>
+              document
+                .getElementById("our-products")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105"
+          >
+            <FaPumpSoap className="text-white text-lg" />
+            Our Products
+          </button>
+
+          <button
+            onClick={() =>
+              document
+                .getElementById("our-chemicals")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="inline-flex items-center gap-2 bg-gray-200 text-blue-800 font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-blue-100 focus:outline-none focus-visible:ring-4 focus-visible:ring-blue-500 transition duration-300 transform hover:scale-105 will-change-transform animate-fade-in-up delay-300"
+          >
+            <FaFlask className="text-blue-700 text-lg" />
+            Our Chemicals
+          </button>
+        </div>
+
+        <div
+          onClick={() =>
+            document
+              .getElementById("products-section")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
+          className="cursor-pointer group relative"
+        >
+          <div className="flex flex-col items-center animate-bounce text-blue-700 text-2xl ">
+            <FaArrowDown />
+          </div>
+        </div>
+      </div>
+
+       {/* About Section 1 */}
+       {/* About Section Wrapper */}
+<div className="relative bg-gray-50">
+  {/* Background Image with Fixed Position */}
+  <div
+    className="absolute inset-0 bg-cover bg-center opacity-50"
+    style={{
+      backgroundImage: "url('/images/jj.jpg')",
+      backgroundAttachment: "fixed", // Locks background in place
+    }}
+  ></div>
+
+  {/* Content */}
+  <div className="relative z-10 px-4 sm:px-8 lg:px-16 py-16">
+    {/* About Section 1 */}
+    <div className="mb-12">
+      <h2 className="text-4xl font-extrabold mb-4 text-center text-black">
+        About Heama Products
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mt-20">
+        {/* Image on the left */}
+        <div className="flex items-center justify-center rounded-lg overflow-hidden">
+          <Image
+            src="/images/hero.jpg"
+            alt="About Heama Products"
+            width={400}
+            height={200}
+            className="rounded-lg object-cover"
+          />
+        </div>
+
+        {/* Text on the right */}
+        <div>
+          <p className="text-gray-800 text-lg">
+            At Heama Chemicals, we believe every product should be more than just effective — it should be an experience. Our carefully curated range of premium-grade chemicals is formulated with uncompromising quality, precision, and safety in mind.
+            Whether it’s cosmetic essentials for timeless beauty, household cleaning agents for an immaculate shine, or industrial solutions that power performance — each product is designed to deliver exceptional results with a touch of elegance.
+          </p>
+        </div>
+      </div>
+    
+
+    {/* About Section 2 */}
+    
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center mt-20 ">
+        {/* Text on the left */}
+         <div>
+          <p className="text-gray-800 text-lg">
+            We source only the finest raw materials, processed with advanced technology to ensure purity, consistency, and unmatched efficiency. From the silky texture of our cosmetic blends to the sparkling brilliance of our cleaning solutions, every drop reflects our commitment to perfection.
+            With Heama Chemicals, you don’t just purchase products — you invest in quality you can trust, luxury you can feel, and results you can see.
+          </p>
+        </div>
+        {/* Image on the right */}
+        <div className="flex items-center justify-center rounded-lg overflow-hidden">
+          <Image
+            src="/images/WhatsApp Image 2025-07-15 at 14.13.13_8aac698b.jpg"
+            alt="Image Two"
+            width={500}
+            height={500}
+            className="object-cover rounded-lg"
+          />
+        </div>
+       
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+      {/* Our Products Categories */}
+      <div
+        id="our-products"
+        ref={productsRef}
+        className={`mb-10 py-10 px-4 sm:px-6 lg:px-20 transition-opacity transition-transform duration-700 ease-out ${
+          productsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        <h2 className="text-5xl font-semibold mb-10 text-center glow-flash">
+          Our Products
+        </h2>
+
+        {/* Cosmetics Section */}
+        <h3 className="text-xl font-semibold mb-10 text-black flex items-center gap-2">
+          <GiPerfumeBottle className="text-green-500" /> Cosmetics
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6 mb-8">
+          {[
+            {
+              image: "/images/products.jpg",
+              title: "Jonis Face Wash",
+              subtitle: "Purity, redefined",
+              description:
+                "A gentle daily cleanser crafted to suit Sri Lankan skin in warm, humid climates. Removes excess oil and impurities while maintaining your skin’s natural balance. The result? A fresh, radiant look—effortless and elegant.",
+              icon: FaTint,
+            },
+            {
+              image: "/images/products.jpg",
+              title: "Jonis Body Lotion",
+              subtitle: "Hydration, held close",
+              description:
+                "Infused with deep-moisture agents ideal for dry or sun-exposed skin. This silky, fast-absorbing lotion is perfect for the tropical lifestyle—leaving skin soft, smooth, and lightly scented with refinement.",
+              icon: FaPumpSoap,
+            },
+            {
+              image: "/images/products.jpg",
+              title: "Jonis Shampoo",
+              subtitle: "Clean. Strong. Luminous",
+              description:
+                "Designed for the demands of island living, Jonis Shampoo gently lifts away buildup while nourishing roots. For hair that feels lighter, looks shinier, and moves with grace—whether in Colombo humidity or hill country cool.",
+              icon: GiWaterBottle,
+            },
+            {
+              image: "/images/products.jpg",
+              title: "Jonis Hair Oil",
+              subtitle: "A tradition reimagined",
+              description:
+                "Rooted in local care rituals, this lightweight oil strengthens hair, revitalizes the scalp, and supports natural growth. With every drop, it honors Sri Lankan heritage—bringing back lustre, one strand at a time.",
+              icon: FaOilCan,
+            },
+            {
+              image: "/images/products.jpg",
+              title: "Jonis Nail Polish Remover",
+              subtitle: "Clean removal. Soft finish",
+              description:
+                "Effective and elegant, this remover erases color swiftly while protecting your nails from harsh dryness. No residue. No compromise. Just clean nails, ready for their next look.",
+              icon: FaPaintBrush,
+            },
+            {
+              image: "/images/products.jpg",
+              title: "Jonis Body Wash",
+              subtitle: "Pure cleanse. Silky touch",
+              description:
+                "Refreshing and indulgent, this body wash gently cleanses while keeping your skin hydrated and soft. No tightness. No dullness. Just smooth, refreshed skin, ready to glow.",
+              icon: FaBath,
+            },
+          ].map((product, index) => (
+            <ProductCard
+              key={index}
+              image={product.image}
+              title={product.title}
+              subtitle={
+                <div className="flex items-center gap-2 font-bold font-serif text-yellow-400">
+                  <FaBath />
+                  <span className="text-gray-800">{product.subtitle}</span>
+                </div>
+              }
+              description={product.description}
+              icon={product.icon}
+            />
+          ))}
+        </div>
+
+        {/* Gray Horizontal Line */}
+        <hr className="border-t border-gray-300 my-12 -mx-4 sm:-mx-6 lg:-mx-20" />
+
+        {/* Cleaning Section */}
+        <h3 className="text-xl font-semibold mb-10 mt-20 text-black flex items-center gap-2">
+          <FaSprayCan className="text-green-500" /> Cleaning Essentials
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-10">
+          {[
+            {
+              image: "/images/WhatsApp Image 2025-07-15 at 14.13.14_d48018e9.jpg",
+              title: "Jonis Dishwash",
+              subtitle: "Sparkling clean. Gentle on hands",
+              description:
+                "Effortlessly dissolves grease and food residue, leaving your dishes spotless and shining. Enriched with skin-friendly ingredients to protect your hands from dryness, so you can clean with care every time. Pure cleanliness, pure comfort.",
+              icon: FaSoap,
+              subtitleIcon: FaWater,
+            },
+            {
+              image: "/images/WhatsApp Image 2025-07-15 at 14.13.14_d48018e9.jpg",
+              title: " Jonis Car Shampoo",
+              subtitle: "Shine that speaks luxury",
+              description:
+                "Gently yet powerfully cleanses your vehicle’s surface, removing dirt and grime without stripping away the paint’s natural gloss. Leaves a radiant, showroom finish with every wash — because your car deserves the best care on the road.",
+              icon: FaCar,
+              subtitleIcon: FaWater,
+            },
+            {
+              image: "/images/WhatsApp Image 2025-07-15 at 14.13.14_d48018e9.jpg",
+              title: "Jonis Air Freshener",
+              subtitle: "Refresh. Revive. Relax",
+              description:
+                "Transforms any space with a burst of crisp, long-lasting fragrance that uplifts and soothes. Perfectly balanced scents create a calm and inviting atmosphere — turning every room into a breath of fresh air.",
+              icon: FaLeaf,
+              subtitleIcon: FaWater,
+            },
+            {
+              image: "/images/WhatsApp Image 2025-07-15 at 14.13.14_d48018e9.jpg",
+              title: "Jonis Toilet Bowl Cleaner",
+              subtitle: "Deep clean. Pure hygiene",
+              description:
+                "Powerfully eliminates stains, limescale, and bacteria, leaving your toilet bowl sparkling clean and fresh. Formulated for fast action and a lasting fresh scent, ensuring a hygienic environment with every flush.",
+              icon: FaToilet,
+              subtitleIcon: FaWater,
+            },
+          ].map((product, index) => (
+            <ProductCard
+              key={index}
+              image={product.image}
+              title={product.title}
+              subtitle={
+                <div className="flex items-center gap-2 font-bold font-serif text-yellow-400">
+                  {product.subtitleIcon && <product.subtitleIcon />}
+                  <span className="text-gray-800">{product.subtitle}</span>
+                </div>
+              }
+              description={product.description}
+              icon={product.icon}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* Our Chemicals Section */}
+      <div
+        id="our-chemicals"
+        ref={chemicalsRef}
+        className={`mb-10 py-10 px-4 sm:px-6 lg:px-20 transition-opacity transition-transform duration-700 ease-out ${
+          chemicalsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        }`}
+      >
+        <h2 className="text-5xl font-semibold mb-20 text-center glow-flash">
+          Our Chemicals
+        </h2>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6 mb-8">
+          {[
+            {
+              image: "/images/pro1.jpg",
+              title: "Hydrogen Peroxide 50%",
+              subtitle: "Purity meets precision",
+              description:
+                "A high-concentration oxidizing agent ideal for textile bleaching, disinfection, and specialized industrial processes. Known for its exceptional stability and purity, ensuring consistent performance with every application.",
+              icon: FaFlask,
+            },
+            {
+              image: "/images/pro2.jpg",
+              title: "Soda Ash Light",
+              subtitle: "Versatility in every grain",
+              description:
+                "An essential alkaline compound used in glass manufacturing, detergent production, and textile processing. Its fine, free-flowing texture ensures effortless handling and precise mixing.",
+              icon: FaFlask,
+            },
+            {
+              image: "/images/pro3.jpg",
+              title: "Sodium Sulfate",
+              subtitle: "Reliable. Efficient. Essential",
+              description:
+                "A trusted filler and pH stabilizer for detergents, textile dyeing, and pulp & paper industries. Consistent composition delivers unmatched reliability in industrial applications.",
+              icon: FaAtom,
+            },
+            {
+              image: "/images/pro4.jpg",
+              title: "Tonsil Optimum 230 FF",
+              subtitle: "Refinement at its finest",
+              description:
+                "Premium quality bentonite clay used for clarifying liquids, removing impurities, and industrial filtration. Renowned for its superior absorption and swelling capacity.",
+              icon: FaFlask,
+            },
+            {
+              image: "/images/pro5.jpg",
+              title: "Epoxy 503-A Resin",
+              subtitle: "Strength you can build on",
+              description:
+                "A high-performance epoxy resin offering excellent adhesion, chemical resistance, and durability. Perfect for coatings, adhesives, and composite materials.",
+              icon: FaPaintBrush,
+            },
+            {
+              image: "/images/pro6.jpg",
+              title: "Toluene",
+              subtitle: "Industrial-grade solvent",
+              description:
+                "A versatile solvent widely used in paint thinners, adhesives, and chemical synthesis. Known for its purity and effectiveness in dissolving various compounds.",
+              icon: FaFlask,
+            },
+          ].map((product, index) => (
+            <ProductCard
+              key={index}
+              image={product.image}
+              title={product.title}
+              subtitle={
+                <div className="flex items-center gap-2 font-bold font-serif text-yellow-400">
+                  <FaTint />
+                  <span className="text-gray-800">{product.subtitle}</span>
+                </div>
+              }
+              description={product.description}
+              icon={product.icon}
+            />
+          ))}
+        </div>
+      </div>
+    </main>
   );
 }
