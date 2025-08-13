@@ -344,7 +344,7 @@ export default function ProductsPage() {
               description:
                 "Effortlessly dissolves grease and food residue, leaving your dishes spotless and shining. Enriched with skin-friendly ingredients to protect your hands from dryness, so you can clean with care every time. Pure cleanliness, pure comfort.",
               icon: FaSoap,
-              subtitleIcon: FaTint,
+             
             },
             {
               image: "/images/WhatsApp Image 2025-07-15 at 14.13.14_d48018e9.jpg",
@@ -353,7 +353,7 @@ export default function ProductsPage() {
               description:
                 "Gently yet powerfully cleanses your vehicle’s surface, removing dirt and grime without stripping away the paint’s natural gloss. Leaves a radiant, showroom finish with every wash — because your car deserves the best care on the road.",
               icon: FaCar,
-              subtitleIcon: FaTint,
+              
             },
             {
               image: "/images/WhatsApp Image 2025-07-15 at 14.13.14_d48018e9.jpg",
@@ -362,7 +362,7 @@ export default function ProductsPage() {
               description:
                 "Transforms any space with a burst of crisp, long-lasting fragrance that uplifts and soothes. Perfectly balanced scents create a calm and inviting atmosphere — turning every room into a breath of fresh air.",
               icon: FaLeaf,
-              subtitleIcon: FaTint,
+              
             },
             {
               image: "/images/WhatsApp Image 2025-07-15 at 14.13.14_d48018e9.jpg",
@@ -371,7 +371,7 @@ export default function ProductsPage() {
               description:
                 "Powerfully eliminates stains, limescale, and bacteria, leaving your toilet bowl sparkling clean and fresh. Formulated for fast action and a lasting fresh scent, ensuring a hygienic environment with every flush.",
               icon: FaToilet,
-              subtitleIcon: FaTint,
+              
             },
           ].map((product, index) => (
             <ProductCard
@@ -380,7 +380,8 @@ export default function ProductsPage() {
               title={product.title}
               subtitle={
                 <div className="flex items-center gap-2 font-bold font-serif text-yellow-400">
-                  {product.subtitleIcon && <product.subtitleIcon />}
+                 < FaTint/>
+                 
                   <span className="text-gray-800">{product.subtitle}</span>
                 </div>
               }
