@@ -396,7 +396,7 @@ export default function ProductsPage() {
       <div
         id="our-chemicals"
         ref={chemicalsRef}
-        className={`mb-10 py-10 px-4 sm:px-6 lg:px-20 transition-opacity transition-transform duration-700 ease-out ${
+        className={` py-10 px-4 sm:px-6 lg:px-20 transition-opacity transition-transform duration-700 ease-out ${
           chemicalsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
