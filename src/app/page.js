@@ -16,6 +16,7 @@ import {
   FaAtom,
   FaOilCan,
   FaPaintBrush,
+   FaMicroscope 
 } from "react-icons/fa";
 
 import {
@@ -24,6 +25,7 @@ import {
 } from "react-icons/gi";
 
 import { useEffect, useState, useRef } from "react";
+
 
 // Custom hook for fade-up on scroll
 function useScrollFadeIn() {
@@ -103,6 +105,7 @@ export default function ProductsPage() {
   const [aboutRef, aboutVisible] = useScrollFadeIn();
   const [productsRef, productsVisible] = useScrollFadeIn();
   const [chemicalsRef, chemicalsVisible] = useScrollFadeIn();
+  
 
   return (
     <main className="relative bg-gradient-to-r from-blue-50 via-white to-cyan-50">
@@ -341,7 +344,7 @@ export default function ProductsPage() {
               description:
                 "Effortlessly dissolves grease and food residue, leaving your dishes spotless and shining. Enriched with skin-friendly ingredients to protect your hands from dryness, so you can clean with care every time. Pure cleanliness, pure comfort.",
               icon: FaSoap,
-              subtitleIcon: FaWater,
+              subtitleIcon: FaTint,
             },
             {
               image: "/images/WhatsApp Image 2025-07-15 at 14.13.14_d48018e9.jpg",
@@ -350,7 +353,7 @@ export default function ProductsPage() {
               description:
                 "Gently yet powerfully cleanses your vehicle’s surface, removing dirt and grime without stripping away the paint’s natural gloss. Leaves a radiant, showroom finish with every wash — because your car deserves the best care on the road.",
               icon: FaCar,
-              subtitleIcon: FaWater,
+              subtitleIcon: FaTint,
             },
             {
               image: "/images/WhatsApp Image 2025-07-15 at 14.13.14_d48018e9.jpg",
@@ -359,7 +362,7 @@ export default function ProductsPage() {
               description:
                 "Transforms any space with a burst of crisp, long-lasting fragrance that uplifts and soothes. Perfectly balanced scents create a calm and inviting atmosphere — turning every room into a breath of fresh air.",
               icon: FaLeaf,
-              subtitleIcon: FaWater,
+              subtitleIcon: FaTint,
             },
             {
               image: "/images/WhatsApp Image 2025-07-15 at 14.13.14_d48018e9.jpg",
@@ -368,7 +371,7 @@ export default function ProductsPage() {
               description:
                 "Powerfully eliminates stains, limescale, and bacteria, leaving your toilet bowl sparkling clean and fresh. Formulated for fast action and a lasting fresh scent, ensuring a hygienic environment with every flush.",
               icon: FaToilet,
-              subtitleIcon: FaWater,
+              subtitleIcon: FaTint,
             },
           ].map((product, index) => (
             <ProductCard
@@ -400,56 +403,122 @@ export default function ProductsPage() {
           Our Chemicals
         </h2>
 
+
+
         <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-6 mb-8">
           {[
-            {
-              image: "/images/pro1.jpg",
-              title: "Hydrogen Peroxide 50%",
-              subtitle: "Purity meets precision",
-              description:
-                "A high-concentration oxidizing agent ideal for textile bleaching, disinfection, and specialized industrial processes. Known for its exceptional stability and purity, ensuring consistent performance with every application.",
-              icon: FaFlask,
-            },
-            {
-              image: "/images/pro2.jpg",
-              title: "Soda Ash Light",
-              subtitle: "Versatility in every grain",
-              description:
-                "An essential alkaline compound used in glass manufacturing, detergent production, and textile processing. Its fine, free-flowing texture ensures effortless handling and precise mixing.",
-              icon: FaFlask,
-            },
-            {
-              image: "/images/pro3.jpg",
-              title: "Sodium Sulfate",
-              subtitle: "Reliable. Efficient. Essential",
-              description:
-                "A trusted filler and pH stabilizer for detergents, textile dyeing, and pulp & paper industries. Consistent composition delivers unmatched reliability in industrial applications.",
-              icon: FaAtom,
-            },
-            {
-              image: "/images/pro4.jpg",
-              title: "Tonsil Optimum 230 FF",
-              subtitle: "Refinement at its finest",
-              description:
-                "Premium quality bentonite clay used for clarifying liquids, removing impurities, and industrial filtration. Renowned for its superior absorption and swelling capacity.",
-              icon: FaFlask,
-            },
-            {
-              image: "/images/pro5.jpg",
-              title: "Epoxy 503-A Resin",
-              subtitle: "Strength you can build on",
-              description:
-                "A high-performance epoxy resin offering excellent adhesion, chemical resistance, and durability. Perfect for coatings, adhesives, and composite materials.",
-              icon: FaPaintBrush,
-            },
-            {
-              image: "/images/pro6.jpg",
-              title: "Toluene",
-              subtitle: "Industrial-grade solvent",
-              description:
-                "A versatile solvent widely used in paint thinners, adhesives, and chemical synthesis. Known for its purity and effectiveness in dissolving various compounds.",
-              icon: FaFlask,
-            },
+    {
+      image: "/images/pro1.jpg",
+      title: "Hydrogen Peroxide 50%",
+      subtitle: "Purity. Power. Protection.",
+      description:
+    "A versatile oxidizer and disinfectant, Hydrogen Peroxide 50% delivers high-performance cleaning and bleaching solutions. Ideal for industrial and laboratory use, ensuring superior efficacy and safety.",
+     icon: FaFlask,
+    subtitleIcon: FaMicroscope,
+},
+
+  {
+    image: "/images/pro2.jpg",
+    title: "Soda Ash Light",
+    subtitle: "Brighten. Balance. Boost.",
+    description:
+      "Soda Ash Light is a premium-grade alkaline compound that enhances pH control, water treatment, and glass production. Its pure, consistent quality ensures flawless performance across applications.",
+    icon: FaFlask,
+    subtitleIcon:FaMicroscope,
+  },
+  {
+    image: "/images/pro3.jpg",
+    title: "Sodium Sulfate",
+    subtitle: "Stable. Strong. Safe.",
+    description:
+      "Sodium Sulfate is a reliable chemical for detergents, glass, and textile industries. Its uniform granules and high purity deliver exceptional results, ensuring optimal industrial performance.",
+    icon:   FaAtom,
+    subtitleIcon: FaFlask,
+  },
+  {
+    image: "/images/pro4.jpg",
+    title: "Tonsil Optimum 230 FF",
+    subtitle: "Absorb. Enhance. Protect.",
+    description:
+      "Tonsil Optimum 230 FF is a high-quality absorbent clay that optimizes filtration, purification, and decolorization processes. Trusted for its consistency and efficiency in industrial applications.",
+    icon: FaFlask,
+    subtitleIcon: FaFlask,
+  },
+  {
+    image: "/images/pro5.jpg",
+    title: "Calcium Hypochlorite, Hydrated",
+    subtitle: "Clean. Clear. Confident.",
+    description:
+      "Calcium Hypochlorite is a potent disinfectant and sanitizer, delivering superior chlorine release for water treatment. Its hydrated form ensures safety and long-lasting effectiveness in all applications.",
+    icon: FaFlask,
+    subtitleIcon: FaFlask,
+  },
+  {
+    image: "/images/pro6.jpg",
+    title: "Trichloroisocyanuric Acid",
+    subtitle: "Purify. Protect. Perform.",
+    description:
+      "Trichloroisocyanuric Acid provides reliable sanitation for swimming pools, industrial water systems, and bleaching processes. Its high chlorine content ensures unmatched cleanliness and performance.",
+    icon:   FaAtom,
+    subtitleIcon: FaFlask,
+  },
+  {
+    image: "/images/pro7.jpg",
+    title: "Trichloroisocyanuric Acid 90%",
+    subtitle: "Concentrated. Controlled. Clean.",
+    description:
+      "This concentrated grade of Trichloroisocyanuric Acid offers maximum efficiency in disinfection and bleaching applications, providing superior protection and performance for industrial and commercial use.",
+    icon: FaFlask,
+    subtitleIcon: FaFlask,
+  },
+  {
+    image: "/images/pro8.jpg",
+    title: "Aluminium Sulphate",
+    subtitle: "Clarify. Coagulate. Care.",
+    description:
+      "Aluminium Sulphate is essential for water purification, paper manufacturing, and industrial processing. Its high solubility and consistent quality make it indispensable for clean and clear results.",
+    icon: FaFlask,
+    subtitleIcon: FaFlask,
+  },
+  {
+    image: "/images/pro10.jpg",
+    title: "Nitric Acid",
+    subtitle: "Powerful. Precise. Pure.",
+    description:
+      "Nitric Acid is a highly reactive acid used in fertilizers, explosives, and metal processing. With premium purity and controlled concentration, it ensures precise and effective chemical reactions.",
+    icon:   FaAtom,
+    subtitleIcon: FaFlask,
+  },
+  {
+    image: "/images/pro9.jpg",
+    title: "Magnesium Sulfate Heptahydrate",
+    subtitle: "Nourish. Balance. Strengthen.",
+    description:
+      "Magnesium Sulfate Heptahydrate, also known as Epsom salt, provides essential minerals for agriculture, healthcare, and industrial uses. Its high purity guarantees effective and safe application.",
+    icon: FaFlask,
+    subtitleIcon: FaFlask,
+  },
+  {
+    image: "/images/pro11.jpg",
+    title: "Hydrated Lime",
+    subtitle: "Neutralize. Strengthen. Protect.",
+    description:
+      "Hydrated Lime is an industrial-grade alkaline material for water treatment, soil stabilization, and chemical manufacturing. Its consistent quality ensures reliable and efficient performance.",
+    icon: FaFlask,
+    subtitleIcon: FaFlask,
+  },
+  {
+    image: "/images/pro12.jpg",
+    title: "Caustic Soda Flakes",
+    subtitle: "Refine. React. Resolve.",
+    description:
+      "Caustic Soda Flakes offer powerful alkaline solutions for chemical processing, soap making, and water treatment. Their high purity and solubility make them indispensable in industrial applications.",
+    icon:   FaAtom,
+    subtitleIcon: FaFlask,
+  },
+
+
+
           ].map((product, index) => (
             <ProductCard
               key={index}
