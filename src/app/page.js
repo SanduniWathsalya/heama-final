@@ -415,7 +415,7 @@ export default function ProductsPage() {
       description:
     "A versatile oxidizer and disinfectant, Hydrogen Peroxide 50% delivers high-performance cleaning and bleaching solutions. Ideal for industrial and laboratory use, ensuring superior efficacy and safety.",
      icon: FaFlask,
-    subtitleIcon: FaMicroscope,
+    
 },
 
   {
@@ -425,7 +425,7 @@ export default function ProductsPage() {
     description:
       "Soda Ash Light is a premium-grade alkaline compound that enhances pH control, water treatment, and glass production. Its pure, consistent quality ensures flawless performance across applications.",
     icon: FaFlask,
-    subtitleIcon:FaMicroscope,
+    
   },
   {
     image: "/images/pro3.jpg",
@@ -434,7 +434,7 @@ export default function ProductsPage() {
     description:
       "Sodium Sulfate is a reliable chemical for detergents, glass, and textile industries. Its uniform granules and high purity deliver exceptional results, ensuring optimal industrial performance.",
     icon:   FaAtom,
-    subtitleIcon: FaFlask,
+  
   },
   {
     image: "/images/pro4.jpg",
@@ -443,7 +443,7 @@ export default function ProductsPage() {
     description:
       "Tonsil Optimum 230 FF is a high-quality absorbent clay that optimizes filtration, purification, and decolorization processes. Trusted for its consistency and efficiency in industrial applications.",
     icon: FaFlask,
-    subtitleIcon: FaFlask,
+   
   },
   {
     image: "/images/pro5.jpg",
@@ -452,7 +452,7 @@ export default function ProductsPage() {
     description:
       "Calcium Hypochlorite is a potent disinfectant and sanitizer, delivering superior chlorine release for water treatment. Its hydrated form ensures safety and long-lasting effectiveness in all applications.",
     icon: FaFlask,
-    subtitleIcon: FaFlask,
+    
   },
   {
     image: "/images/pro6.jpg",
@@ -461,7 +461,7 @@ export default function ProductsPage() {
     description:
       "Trichloroisocyanuric Acid provides reliable sanitation for swimming pools, industrial water systems, and bleaching processes. Its high chlorine content ensures unmatched cleanliness and performance.",
     icon:   FaAtom,
-    subtitleIcon: FaFlask,
+    
   },
   {
     image: "/images/pro7.jpg",
@@ -470,7 +470,7 @@ export default function ProductsPage() {
     description:
       "This concentrated grade of Trichloroisocyanuric Acid offers maximum efficiency in disinfection and bleaching applications, providing superior protection and performance for industrial and commercial use.",
     icon: FaFlask,
-    subtitleIcon: FaFlask,
+    
   },
   {
     image: "/images/pro8.jpg",
@@ -479,7 +479,7 @@ export default function ProductsPage() {
     description:
       "Aluminium Sulphate is essential for water purification, paper manufacturing, and industrial processing. Its high solubility and consistent quality make it indispensable for clean and clear results.",
     icon: FaFlask,
-    subtitleIcon: FaFlask,
+   
   },
   {
     image: "/images/pro10.jpg",
@@ -488,7 +488,7 @@ export default function ProductsPage() {
     description:
       "Nitric Acid is a highly reactive acid used in fertilizers, explosives, and metal processing. With premium purity and controlled concentration, it ensures precise and effective chemical reactions.",
     icon:   FaAtom,
-    subtitleIcon: FaFlask,
+    
   },
   {
     image: "/images/pro9.jpg",
@@ -497,7 +497,7 @@ export default function ProductsPage() {
     description:
       "Magnesium Sulfate Heptahydrate, also known as Epsom salt, provides essential minerals for agriculture, healthcare, and industrial uses. Its high purity guarantees effective and safe application.",
     icon: FaFlask,
-    subtitleIcon: FaFlask,
+   
   },
   {
     image: "/images/pro11.jpg",
@@ -506,7 +506,7 @@ export default function ProductsPage() {
     description:
       "Hydrated Lime is an industrial-grade alkaline material for water treatment, soil stabilization, and chemical manufacturing. Its consistent quality ensures reliable and efficient performance.",
     icon: FaFlask,
-    subtitleIcon: FaFlask,
+    
   },
   {
     image: "/images/pro12.jpg",
@@ -515,7 +515,7 @@ export default function ProductsPage() {
     description:
       "Caustic Soda Flakes offer powerful alkaline solutions for chemical processing, soap making, and water treatment. Their high purity and solubility make them indispensable in industrial applications.",
     icon:   FaAtom,
-    subtitleIcon: FaFlask,
+    
   },
 
 
@@ -527,7 +527,7 @@ export default function ProductsPage() {
               title={product.title}
               subtitle={
                 <div className="flex items-center gap-2 font-bold font-serif text-yellow-400">
-                  <FaTint />
+                  <FaMicroscope />
                   <span className="text-gray-800">{product.subtitle}</span>
                 </div>
               }
