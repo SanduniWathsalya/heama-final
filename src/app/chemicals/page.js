@@ -132,7 +132,7 @@ export default function ProductsPage() {
       <section className="relative overflow-hidden shadow-2xl">
         <div
           className="absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{ backgroundImage: "url('/about.png')" }}
+          style={{ backgroundImage: "url('/images/hero1.png')" }}
           aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/55 to-black/70 backdrop-blur-[2px]" />

@@ -1,5 +1,4 @@
 "use client";
-import Link from "next/link";
 
 import Image from "next/image";
 import {
@@ -15,7 +14,7 @@ import {
   FaToilet,
   FaOilCan,
   FaPaintBrush,
-
+  
 } from "react-icons/fa";
 import { GiPerfumeBottle, GiWaterBottle } from "react-icons/gi";
 import { useEffect, useState, useRef } from "react";
@@ -117,7 +116,7 @@ function ProductCard({ image, title, subtitle, description, icon: Icon, accent =
 
 export default function ProductsPage() {
   const [productsRef, productsVisible] = useScrollFadeIn();
-  
+
 
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
@@ -169,13 +168,13 @@ export default function ProductsPage() {
             <FaPumpSoap className="text-white text-lg" />
             Our Products
           </button>
-          <Link
-  href="/chemicals" // change to your chemicals page route
-  className="inline-flex items-center gap-2 bg-white text-blue-800 font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-blue-50 transition duration-300 transform hover:scale-105"
->
-  <FaFlask className="text-blue-700 text-lg" />
-  Our Chemicals
-</Link>
+          <button
+            onClick={() => scrollTo("our-chemicals")}
+            className="inline-flex items-center gap-2 bg-white text-blue-800 font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-blue-50 transition duration-300 transform hover:scale-105"
+          >
+            <FaFlask className="text-blue-700 text-lg" />
+            Our Chemicals
+          </button>
         </div>
         <div onClick={() => scrollTo("our-products")} className="cursor-pointer group">
           <div className="flex flex-col items-center animate-bounce text-blue-700 text-2xl">
@@ -188,7 +187,7 @@ export default function ProductsPage() {
       <section
         id="our-products"
         ref={productsRef}
-        className={`mb-10 py-10 px-4 sm:px-6 lg:px-20 transition-all duration-700 ease-out ${
+        className={`pb-6 pt-10 px-4 sm:px-6 lg:px-20 transition-all duration-700 ease-out ${
           productsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
@@ -315,10 +314,10 @@ export default function ProductsPage() {
           ))}
         </div>
 
-        <hr className="border-t border-gray-300 my-12 -mx-4 sm:-mx-6 lg:-mx-20" />
+        <hr className="border-t border-gray-200 my-12 -mx-4 sm:-mx-6 lg:-mx-20" />
 
         {/* Cleaning Essentials */}
-        <h3 className="text-3xl font-semibold  mt-4  mb-8 text-black flex items-center gap-2">
+        <h3 className="text-3xl font-semibold mb-8 mt-4 text-black flex items-center gap-2">
           <FaSprayCan className="text-emerald-600" /> Cleaning Essentials
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -385,7 +384,7 @@ export default function ProductsPage() {
         </div>
       </section>
 
-    
+      
     </main>
   );
 }
