@@ -4,20 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 import {
   FaFlask,
-  FaSoap,
-  FaLeaf,
-  FaSprayCan,
-  FaBath,
-  FaTint,
   FaPumpSoap,
-  FaArrowDown,
-  FaCar,
-  FaToilet,
-  FaOilCan,
-  FaPaintBrush,
-
+  FaArrowDown,  
+  FaMicroscope,
+  FaAtom
 } from "react-icons/fa";
-import { GiPerfumeBottle, GiWaterBottle } from "react-icons/gi";
 import { useEffect, useState, useRef } from "react";
 
 // Fade-up on scroll
@@ -116,8 +107,7 @@ function ProductCard({ image, title, subtitle, description, icon: Icon, accent =
 }
 
 export default function ProductsPage() {
-  const [productsRef, productsVisible] = useScrollFadeIn();
-  
+  const [chemicalsRef, chemicalsVisible] = useScrollFadeIn();
 
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
@@ -147,7 +137,7 @@ export default function ProductsPage() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/55 to-black/70 backdrop-blur-[2px]" />
         <div className="relative z-10 px-6 py-24 md:py-32 lg:py-40 text-center text-white">
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow ">Our Products</h1>
+          <h1 className="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow">Our Industrial Chemicals</h1>
           <p className="max-w-3xl mx-auto text-lg md:text-xl font-medium leading-relaxed text-gray-200">
             Our products deliver reliable performance and meet industry standards across cleaning, industrial, and specialty applications.
           </p>
@@ -162,20 +152,20 @@ export default function ProductsPage() {
           Click to see more
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-6">
+          <Link
+         href="/" 
+        className="inline-flex items-center gap-2 bg-white text-blue-800 font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-blue-50 transition duration-300 transform hover:scale-105"
+         >
+      <FaPumpSoap className="text-blue-700 text-lg" />
+       Our Products
+      </Link>
           <button
-            onClick={() => scrollTo("our-products")}
+            onClick={() => scrollTo("our-chemicals")}
             className="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105"
           >
-            <FaPumpSoap className="text-white text-lg" />
-            Our Products
+            <FaFlask className="text-white text-lg" />
+            Our Chemicals
           </button>
-          <Link
-  href="/chemicals" // change to your chemicals page route
-  className="inline-flex items-center gap-2 bg-white text-blue-800 font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-blue-50 transition duration-300 transform hover:scale-105"
->
-  <FaFlask className="text-blue-700 text-lg" />
-  Our Chemicals
-</Link>
         </div>
         <div onClick={() => scrollTo("our-products")} className="cursor-pointer group">
           <div className="flex flex-col items-center animate-bounce text-blue-700 text-2xl">
@@ -184,208 +174,181 @@ export default function ProductsPage() {
         </div>
       </div>
 
-      {/* Our Products */}
+        {/* Our Chemicals */}
       <section
-        id="our-products"
-        ref={productsRef}
-        className={`mb-10 py-10 px-4 sm:px-6 lg:px-20 transition-all duration-700 ease-out ${
-          productsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+        id="our-chemicals"
+        ref={chemicalsRef}
+        className={`py-10 px-4 sm:px-6 lg:px-20 transition-all duration-700 ease-out ${
+          chemicalsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
-        <h2 className="text-4xl md:text-5xl font-semibold mb-10 text-center glow-flash text-gray-800">Our Products</h2>
+        <h2 className="text-4xl md:text-5xl font-semibold mb-12 text-center glow-flash text-gray-800">
+          Our Chemicals
+        </h2>
 
-        {/* Cosmetics */}
-        <h3 className="text-3xl font-semibold mb-8 text-black flex items-center gap-2">
-          <GiPerfumeBottle className="text-emerald-600" /> Cosmetics
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
           {[
             {
-              image: "/images/face wash.png",
-              title: "Jonis Face Wash",
+              image: "/images/pro1.jpg",
+              title: "Hydrogen Peroxide 50%",
               subtitle: (
                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
-                  <FaTint className="text-blue-600" />
-                  <span className="text-gray-800">Purity, redefined</span>
+                  <FaMicroscope />
+                  <span className="text-gray-800">Purity. Power. Protection.</span>
                 </div>
               ),
               description:
-                "A gentle daily cleanser suited to warm, humid climates. Removes excess oil and impurities while maintaining balance for a fresh, radiant look.",
-              icon: FaTint,
-              accent: "text-blue-600",
+                "Versatile oxidizer and disinfectant for high-performance cleaning and bleaching in industrial and lab use.",
+              icon: FaFlask,
             },
             {
-              image: "/images/powder.png",
-              title: "Jonis Powder",
+              image: "/images/pro2.jpg",
+              title: "Soda Ash Light",
               subtitle: (
                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
-                  <FaPumpSoap className="text-rose-500" />
-                  <span className="text-gray-800">Hydration, held close</span>
+                  <FaMicroscope />
+                  <span className="text-gray-800">Brighten. Balance. Boost.</span>
                 </div>
               ),
               description:
-                "Silky, fast-absorbing moisture for dry or sun-exposed skin. Soft, smooth, and lightly scented — perfect for the tropics.",
-              icon: FaPumpSoap,
-              accent: "text-rose-500",
+                "Premium alkaline compound for pH control, water treatment, and glass production with consistent quality.",
+              icon: FaFlask,
             },
             {
-              image: "/images/shampoo.png",
-              title: "Jonis Shampoo",
+              image: "/images/pro3.jpg",
+              title: "Sodium Sulfate",
               subtitle: (
                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
-                  <GiWaterBottle className="text-cyan-600" />
-                  <span className="text-gray-800">Clean. Strong. Luminous</span>
+                  <FaMicroscope />
+                  <span className="text-gray-800">Stable. Strong. Safe.</span>
                 </div>
               ),
               description:
-                "Gently lifts buildup while nourishing roots. Hair feels lighter and looks shinier — from city humidity to hill country cool.",
-              icon: GiWaterBottle,
-              accent: "text-cyan-600",
+                "Reliable for detergents, glass, and textiles. Uniform granules and purity ensure optimal performance.",
+              icon: FaAtom,
             },
             {
-              image: "/images/hire oil.png",
-              title: "Jonis Hair Oil",
+              image: "/images/pro4.jpg",
+              title: "Tonsil Optimum 230 FF",
               subtitle: (
                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
-                  <FaOilCan className="text-amber-600" />
-                  <span className="text-gray-800">A tradition reimagined</span>
+                  <FaMicroscope />
+                  <span className="text-gray-800">Absorb. Enhance. Protect.</span>
                 </div>
               ),
               description:
-                "Lightweight oil that strengthens hair, revitalizes the scalp, and supports natural growth — honoring heritage with every drop.",
-              icon: FaOilCan,
-              accent: "text-amber-600",
+                "High-quality absorbent clay for filtration, purification, and decolorization. Consistent and efficient.",
+              icon: FaFlask,
             },
             {
-              image: "/images/nailpolish.png",
-              title: "Jonis Nail Polish Remover",
+              image: "/images/pro5.jpg",
+              title: "Calcium Hypochlorite, Hydrated",
               subtitle: (
                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
-                  <FaPaintBrush className="text-fuchsia-600" />
-                  <span className="text-gray-800">Clean removal. Soft finish</span>
+                  <FaMicroscope />
+                  <span className="text-gray-800">Clean. Clear. Confident.</span>
                 </div>
               ),
               description:
-                "Erases color swiftly without excessive dryness. No residue — just clean nails ready for their next look.",
-              icon: FaPaintBrush,
-              accent: "text-fuchsia-600",
+                "Potent disinfectant for water treatment. Hydrated form improves safety and long-lasting effectiveness.",
+              icon: FaFlask,
             },
             {
-              image: "/images/body wash 01.png",
-              title: "Jonis Body Wash",
+              image: "/images/pro6.jpg",
+              title: "Trichloroisocyanuric Acid",
               subtitle: (
                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
-                  <FaBath className="text-violet-600" />
-                  <span className="text-gray-800">Pure cleanse. Silky touch</span>
+                  <FaMicroscope />
+                  <span className="text-gray-800">Purify. Protect. Perform.</span>
                 </div>
               ),
               description:
-                "Refreshing and indulgent — cleanses while keeping skin hydrated and soft. No tightness, no dullness — just glow.",
-              icon: FaBath,
-              accent: "text-violet-600",
-            }, {
-              image: "/images/body wash 02.png",
-              title: "Jonis Body Wash",
-              subtitle: (
-                <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
-                  <FaBath className="text-violet-600" />
-                  <span className="text-gray-800">Pure cleanse. Silky touch</span>
-                </div>
-              ),
-              description:
-                "Refreshing and indulgent — cleanses while keeping skin hydrated and soft. No tightness, no dullness — just glow.",
-              icon: FaBath,
-              accent: "text-violet-600",
-            }, {
-              image: "/images/body wash 03.png",
-              title: "Jonis Body Wash",
-              subtitle: (
-                <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
-                  <FaBath className="text-violet-600" />
-                  <span className="text-gray-800">Pure cleanse. Silky touch</span>
-                </div>
-              ),
-              description:
-                "Refreshing and indulgent — cleanses while keeping skin hydrated and soft. No tightness, no dullness — just glow.",
-              icon: FaBath,
-              accent: "text-violet-600",
-            },
-          ].map((p, i) => (
-            <ProductCard key={i} {...p} />
-          ))}
-        </div>
-
-        <hr className="border-t border-gray-300 my-12 -mx-4 sm:-mx-6 lg:-mx-20" />
-
-        {/* Cleaning Essentials */}
-        <h3 className="text-3xl font-semibold  mt-4  mb-8 text-black flex items-center gap-2">
-          <FaSprayCan className="text-emerald-600" /> Cleaning Essentials
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            {
-              image: "/images/lemon.png",
-              title: "Jonis Dishwash",
-              subtitle: (
-                <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
-                  <FaTint className="text-blue-600" />
-                  <span className="text-gray-800">Sparkling clean. Gentle on hands</span>
-                </div>
-              ),
-              description:
-                "Dissolves grease and residue, leaving dishes spotless. Enriched to protect hands from dryness — pure cleanliness, pure comfort.",
-              icon: FaSoap,
-              accent: "text-blue-600",
+                "Reliable sanitation for pools and industrial systems with high chlorine content for cleanliness.",
+              icon: FaAtom,
             },
             {
-              image: "/images/carwash.png",
-              title: "Jonis Car Shampoo",
+              image: "/images/pro7.jpg",
+              title: "Trichloroisocyanuric Acid 90%",
               subtitle: (
                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
-                  <FaCar className="text-indigo-600" />
-                  <span className="text-gray-800">Shine that speaks luxury</span>
+                  <FaMicroscope />
+                  <span className="text-gray-800">Concentrated. Controlled. Clean.</span>
                 </div>
               ),
               description:
-                "Gently but powerfully removes dirt without stripping gloss. Leaves a radiant, showroom finish with every wash.",
-              icon: FaCar,
-              accent: "text-indigo-600",
+                "Concentrated grade for maximum efficiency in disinfection and bleaching across industrial use.",
+              icon: FaFlask,
             },
             {
-              image: "/images/air.png",
-              title: "Jonis Air Freshener",
+              image: "/images/pro8.jpg",
+              title: "Aluminium Sulphate",
               subtitle: (
                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
-                  <FaLeaf className="text-emerald-600" />
-                  <span className="text-gray-800">Refresh. Revive. Relax</span>
+                  <FaMicroscope />
+                  <span className="text-gray-800">Clarify. Coagulate. Care.</span>
                 </div>
               ),
               description:
-                "Transforms any space with crisp, long-lasting fragrance. Balanced scents for a calm, inviting atmosphere.",
-              icon: FaLeaf,
-              accent: "text-emerald-600",
+                "Essential for water purification and paper manufacturing — highly soluble and consistent.",
+              icon: FaFlask,
             },
             {
-              image: "/images/Toilet.png",
-              title: "Jonis Toilet Bowl Cleaner",
+              image: "/images/pro11.jpg",
+              title: "Nitric Acid",
               subtitle: (
                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
-                  <FaToilet className="text-rose-600" />
-                  <span className="text-gray-800">Deep clean. Pure hygiene</span>
+                  <FaMicroscope />
+                  <span className="text-gray-800">Powerful. Precise. Pure.</span>
                 </div>
               ),
               description:
-                "Eliminates stains, limescale, and bacteria fast — for a sparkling bowl and fresh, hygienic environment.",
-              icon: FaToilet,
-              accent: "text-rose-600",
+                "Reactive acid for fertilizers, explosives, and metal processing with premium purity.",
+              icon: FaAtom,
+            },
+            {
+              image: "/images/pro9.jpg",
+              title: "Magnesium Sulfate Heptahydrate",
+              subtitle: (
+                <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                  <FaMicroscope />
+                  <span className="text-gray-800">Nourish. Balance. Strengthen.</span>
+                </div>
+              ),
+              description:
+                "Epsom salt for agriculture, healthcare, and industry — high purity for effective application.",
+              icon: FaFlask,
+            },
+            {
+              image: "/images/1000152735.jpg",
+              title: "Hydrated Lime",
+              subtitle: (
+                <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                  <FaMicroscope />
+                  <span className="text-gray-800">Neutralize. Strengthen. Protect.</span>
+                </div>
+              ),
+              description:
+                "Industrial alkaline for water treatment, soil stabilization, and chemical manufacturing.",
+              icon: FaFlask,
+            },
+            {
+              image: "/images/pro12.jpg",
+              title: "Caustic Soda Flakes",
+              subtitle: (
+                <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                  <FaMicroscope />
+                  <span className="text-gray-800">Refine. React. Resolve.</span>
+                </div>
+              ),
+              description:
+                "Powerful alkaline for processing, soap making, and water treatment — high purity and solubility.",
+              icon: FaAtom,
             },
           ].map((p, i) => (
             <ProductCard key={i} {...p} />
           ))}
         </div>
       </section>
-
-    
-    </main>
+        </main>
   );
 }
