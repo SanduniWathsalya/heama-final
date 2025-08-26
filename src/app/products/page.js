@@ -17,8 +17,15 @@ import {
   FaOilCan,
   FaPaintBrush,
   FaArrowUp,
-  FaPaperPlane,
+  
   FaInfoCircle,
+
+  FaAtom,
+  FaMicroscope,
+  
+  FaPaperPlane,
+  
+  FaExclamationTriangle,
 } from "react-icons/fa";
 import { GiPerfumeBottle, GiWaterBottle } from "react-icons/gi";
 
@@ -278,25 +285,31 @@ export default function ConsumerProductsPage() {
         {/* Content */}
         <div className="relative z-10 px-6 py-24 md:py-32 lg:py-40 text-center text-white">
           <h1 className="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow glow-flash">
-           Our Cosmetics
+           Our Products
           </h1>
           <p className="max-w-3xl mx-auto text-lg md:text-xl font-medium leading-relaxed text-gray-200">
-            Reliable performance and luxurious quality in every cosmetic product we offer.
+            Reliable performance and luxurious quality in every product we offer.
           </p>
         <div className="mt-8 flex items-center justify-center gap-3">
-  <Link
-    href="/products/products/cleaning-essentials"
+  <button
+    onClick={() => {
+      const el = document.getElementById("cleaning");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }}
     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/90 text-blue-800 font-semibold shadow hover:bg-white"
   >
     Explore Cleaning
-  </Link>
+  </button>
 
-  <Link
-    href="/products/products/industrial-chemicals"
-    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold shadow hover:from-blue-700 hover:to-indigo-700"
+  <button
+    onClick={() => {
+      const el = document.getElementById("chemicals");
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }}
+    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/90 text-blue-800 font-semibold shadow hover:bg-white"
   >
     Explore Chemicals
-  </Link>
+  </button>
 </div>
         </div>
         {/* Decorative dots */}
@@ -308,6 +321,9 @@ export default function ConsumerProductsPage() {
       {/* Content */}
       <section className="py-12 px-4 sm:px-6 lg:px-20">
         {/* Cosmetics */}
+         <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-12">
+    Our Cosmetics
+  </h2>
        
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {[
@@ -429,10 +445,267 @@ export default function ConsumerProductsPage() {
             <ProductCard key={i} {...p} />
           ))}
         </div>
+</section>
 
-        
-       
-      </section>
+
+ <section id="cleaning" className="py-12 px-4 sm:px-6 lg:px-20">
+   <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-12">
+    Our Cleaning Essentials
+  </h2>
+ <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            {
+              image: "/images/lemon.png",
+              title: "Jonis Dishwash",
+              subtitle: (
+                <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                  <FaTint className="text-blue-600" />
+                  <span className="text-gray-800">Sparkling clean. Gentle on hands</span>
+                </div>
+              ),
+              description:
+                "Dissolves grease and residue, leaving dishes spotless. Enriched to protect hands from dryness — pure cleanliness, pure comfort.",
+              icon: FaSoap,
+              accent: "text-blue-600",
+              badge: "Family Favorite",
+            },
+            {
+              image: "/images/carwash.png",
+              title: "Jonis Car Shampoo",
+              subtitle: (
+                <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                  <FaCar className="text-indigo-600" />
+                  <span className="text-gray-800">Shine that speaks luxury</span>
+                </div>
+              ),
+              description:
+                "Gently but powerfully removes dirt without stripping gloss. Leaves a radiant, showroom finish with every wash.",
+              icon: FaCar,
+              accent: "text-indigo-600",
+            },
+            {
+              image: "/images/air.png",
+              title: "Jonis Air Freshener",
+              subtitle: (
+                <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                  <FaLeaf className="text-emerald-600" />
+                  <span className="text-gray-800">Refresh. Revive. Relax</span>
+                </div>
+              ),
+              description:
+                "Transforms any space with crisp, long-lasting fragrance. Balanced scents for a calm, inviting atmosphere.",
+              icon: FaLeaf,
+              accent: "text-emerald-600",
+            },
+            {
+              image: "/images/Toilet.png",
+              title: "Jonis Toilet Bowl Cleaner",
+              subtitle: (
+                <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                  <FaToilet className="text-rose-600" />
+                  <span className="text-gray-800">Deep clean. Pure hygiene</span>
+                </div>
+              ),
+              description:
+                "Eliminates stains, limescale, and bacteria fast — for a sparkling bowl and fresh, hygienic environment.",
+              icon: FaToilet,
+              accent: "text-rose-600",
+            },
+          ].map((p, i) => (
+            <ProductCard key={i} {...p} />
+          ))}
+        </div>
+ </section>
+
+
+ <section id="chemicals" className="py-12 px-4 sm:px-6 lg:px-20">
+   <h2 className="text-3xl md:text-4xl font-extrabold text-center text-gray-800 mb-12">
+    Our Industrial Chemicals
+  </h2>
+         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+           {[
+             {
+               image: "/images/pro1.jpg",
+               title: "Hydrogen Peroxide 50%",
+               subtitle: (
+                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                   <FaMicroscope />
+                   <span className="text-gray-800">Purity. Power. Protection.</span>
+                 </div>
+               ),
+               description:
+                 "Versatile oxidizer and disinfectant for high-performance cleaning and bleaching in industrial and lab use.",
+               icon: FaFlask,
+               accent: "text-cyan-600",
+               badge: "50%",
+             },
+             {
+               image: "/images/pro2.jpg",
+               title: "Soda Ash Light",
+               subtitle: (
+                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                   <FaMicroscope />
+                   <span className="text-gray-800">Brighten. Balance. Boost.</span>
+                 </div>
+               ),
+               description:
+                 "Premium alkaline compound for pH control, water treatment, and glass production with consistent quality.",
+               icon: FaFlask,
+               accent: "text-blue-600",
+               badge: "Light",
+             },
+             {
+               image: "/images/pro3.jpg",
+               title: "Sodium Sulfate",
+               subtitle: (
+                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                   <FaMicroscope />
+                   <span className="text-gray-800">Stable. Strong. Safe.</span>
+                 </div>
+               ),
+               description:
+                 "Reliable for detergents, glass, and textiles. Uniform granules and purity ensure optimal performance.",
+               icon: FaAtom,
+               accent: "text-emerald-600",
+               badge: "Tech Grade",
+             },
+             {
+               image: "/images/pro4.jpg",
+               title: "Tonsil Optimum 230 FF",
+               subtitle: (
+                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                   <FaMicroscope />
+                   <span className="text-gray-800">Absorb. Enhance. Protect.</span>
+                 </div>
+               ),
+               description:
+                 "High-quality absorbent clay for filtration, purification, and decolorization. Consistent and efficient.",
+               icon: FaFlask,
+               accent: "text-indigo-600",
+             },
+             {
+               image: "/images/pro5.jpg",
+               title: "Calcium Hypochlorite, Hydrated",
+               subtitle: (
+                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                   <FaMicroscope />
+                   <span className="text-gray-800">Clean. Clear. Confident.</span>
+                 </div>
+               ),
+               description:
+                 "Potent disinfectant for water treatment. Hydrated form improves safety and long-lasting effectiveness.",
+               icon: FaFlask,
+               accent: "text-amber-600",
+               badge: "Hydrated",
+             },
+             {
+               image: "/images/pro6.jpg",
+               title: "Trichloroisocyanuric Acid",
+               subtitle: (
+                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                   <FaMicroscope />
+                   <span className="text-gray-800">Purify. Protect. Perform.</span>
+                 </div>
+               ),
+               description:
+                 "Reliable sanitation for pools and industrial systems with high chlorine content for cleanliness.",
+               icon: FaAtom,
+               accent: "text-rose-600",
+             },
+             {
+               image: "/images/pro7.jpg",
+               title: "Trichloroisocyanuric Acid 90%",
+               subtitle: (
+                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                   <FaMicroscope />
+                   <span className="text-gray-800">Concentrated. Controlled. Clean.</span>
+                 </div>
+               ),
+               description:
+                 "Concentrated grade for maximum efficiency in disinfection and bleaching across industrial use.",
+               icon: FaFlask,
+               accent: "text-sky-600",
+               badge: "90%",
+             },
+             {
+               image: "/images/pro8.jpg",
+               title: "Aluminium Sulphate",
+               subtitle: (
+                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                   <FaMicroscope />
+                   <span className="text-gray-800">Clarify. Coagulate. Care.</span>
+                 </div>
+               ),
+               description:
+                 "Essential for water purification and paper manufacturing — highly soluble and consistent.",
+               icon: FaFlask,
+               accent: "text-fuchsia-600",
+             },
+             {
+               image: "/images/pro11.jpg",
+               title: "Nitric Acid",
+               subtitle: (
+                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                   <FaMicroscope />
+                   <span className="text-gray-800">Powerful. Precise. Pure.</span>
+                 </div>
+               ),
+               description:
+                 "Reactive acid for fertilizers, explosives, and metal processing with premium purity.",
+               icon: FaAtom,
+               accent: "text-red-600",
+               badge: "Concentrated",
+             },
+             {
+               image: "/images/pro9.jpg",
+               title: "Magnesium Sulfate Heptahydrate",
+               subtitle: (
+                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                   <FaMicroscope />
+                   <span className="text-gray-800">Nourish. Balance. Strengthen.</span>
+                 </div>
+               ),
+               description:
+                 "Epsom salt for agriculture, healthcare, and industry — high purity for effective application.",
+               icon: FaFlask,
+               accent: "text-emerald-600",
+               badge: "Heptahydrate",
+             },
+             {
+               image: "/images/1000152735.jpg",
+               title: "Hydrated Lime",
+               subtitle: (
+                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                   <FaMicroscope />
+                   <span className="text-gray-800">Neutralize. Strengthen. Protect.</span>
+                 </div>
+               ),
+               description:
+                 "Industrial alkaline for water treatment, soil stabilization, and chemical manufacturing.",
+               icon: FaFlask,
+               accent: "text-lime-600",
+               badge: "Alkaline",
+             },
+             {
+               image: "/images/pro12.jpg",
+               title: "Caustic Soda Flakes",
+               subtitle: (
+                 <div className="flex items-center justify-center gap-2 font-bold font-serif text-yellow-500">
+                   <FaMicroscope />
+                   <span className="text-gray-800">Refine. React. Resolve.</span>
+                 </div>
+               ),
+               description:
+                 "Powerful alkaline for processing, soap making, and water treatment — high purity and solubility.",
+               icon: FaAtom,
+               accent: "text-blue-700",
+               badge: "High Purity",
+             },
+           ].map((p, i) => (
+             <ProductCard key={i} {...p} />
+           ))}
+         </div>
+       </section>
 
       <BackToTopButton />
     </main>
